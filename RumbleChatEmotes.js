@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Rumble Chat Emojis
 // @namespace    http://tampermonkey.net/
-// @version      0.23
+// @version      0.24
 // @description  Replace keywords with emojis
 // @author       Mr. Qian Hu Zi
 // @match        https://rumble.com/*
@@ -47,6 +47,7 @@
 ":SunGorilla:":"https://cdn.betterttv.net/emote/61ff26f006fd6a9f5be389b6/1x",
       ":SUNGORILLA:":"https://cdn.betterttv.net/emote/61ff26f006fd6a9f5be389b6/1x",
       ":sungorilla:":"https://cdn.betterttv.net/emote/61ff26f006fd6a9f5be389b6/1x",
+":Soyturn:":"https://cdn.betterttv.net/emote/63c5ceb5999b53d39ed72d07/1x",
 ":Infrared:":"https://cdn.betterttv.net/emote/6208316306fd6a9f5be453d5/1x",
 ":COGGERS:":"https://cdn.betterttv.net/emote/61ad7b43002cdeedc21e66eb/1x",
 ":DuginRocket:":"https://cdn.betterttv.net/emote/620852ec06fd6a9f5be4569b/1x",
