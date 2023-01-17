@@ -16,9 +16,6 @@
      * You can add or remove string-to-emote mappings here
      **/
     const emotes = {
-        '😆': 'https://yt3.ggpht.com/0FLRqpIWPYql08oDl3pYSE_JytvVdSnB8MI4saumn1JeaUa6Boz_9Bvx70QIP3009caHGfHBJA=w48-h48-c-k-nd',
-        '⚾️': 'https://yt3.ggpht.com/CT_QFIvY2WfvOIJvLqYoVTDx4tpchXWo5-KiLhPlPqn7HoFknoPBY86NNxq8i44MH2JPvw5m4JQ=w48-h48-c-k-nd',
-        '😔': 'https://yt3.ggpht.com/jTUFpfVfjnfTMvCteNf4v2e1_V730fD14fGtgz4c5rU4Yw-VeDRQOw6vIULWMNxalvGXj1NKdA=w48-h48-c-k-nd',
         ':LETSGOOO:': 'https://cdn.betterttv.net/emote/5f7cd139ce8bc74a94247828/1x',
         ':PepeSpit:': 'https://cdn.betterttv.net/emote/5e3f1caed736527d5cd29c13/1x',
         ':pepeSpit:': 'https://cdn.betterttv.net/emote/5e3f1caed736527d5cd29c13/1x',
@@ -133,7 +130,6 @@
         ':pog:': 'https://yt3.ggpht.com/gKBwdnyylvKn1dD9o0lRhQXjx1pYAPftzCQPnPyTluDjwdhmr1LEk1VHTj-dTWOwqko2i-ntWw=w24-h24-c-k-nd',
         ':CPUSA2036:': 'https://yt3.ggpht.com/NCNJ0AOXxUeIOZ3PZnzjdeaGkWMSnWUadrD-8rQUco3IaCA9DLpBeKBPYMCTu6ALk7U7HTHSNQ=w24-h24-c-k-nd',
         ':KEKWait:': 'https://yt3.ggpht.com/jypN1BGMUnlGKAFLSpcsiMIRvw3Mb3JnQ-ca8erL8abx0FMAlUKd6F5_eQPGBvwdmoUKuvmPccw=w24-h24-c-k-nd',
-        KEKW: 'https://yt3.ggpht.com/0FLRqpIWPYql08oDl3pYSE_JytvVdSnB8MI4saumn1JeaUa6Boz_9Bvx70QIP3009caHGfHBJA=w24-h24-c-k-nd',
         ':ANGLOBOX:': 'https://yt3.ggpht.com/RGrzWPEzJCyz94yBb_wTb1U3NKKolGDc3R57YzMwAYvTmQBJTQpnzyWkbZadxHoBPElKqIMRsQ=w24-h24-c-k-nd',
         ':angloBox:': 'https://yt3.ggpht.com/RGrzWPEzJCyz94yBb_wTb1U3NKKolGDc3R57YzMwAYvTmQBJTQpnzyWkbZadxHoBPElKqIMRsQ=w24-h24-c-k-nd',
         ':GLOW:': 'https://yt3.ggpht.com/WGbCBHgmRfmUn7MQikZf_6f2r-WQbKmZ4ZL7bbWAiHjp4AILq5S3C9KKc9D-i18xLqKcs8eHbQ=w24-h24-c-k-nd',
@@ -167,6 +163,13 @@
         ':infrar8TANKIE:': 'https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_c83e1f09869e4152b86100b4ded2345c/static/light/1.0'
     };
 
+    const specialEmotes = {
+        '😆': 'https://yt3.ggpht.com/0FLRqpIWPYql08oDl3pYSE_JytvVdSnB8MI4saumn1JeaUa6Boz_9Bvx70QIP3009caHGfHBJA=w48-h48-c-k-nd',
+        '⚾️': 'https://yt3.ggpht.com/CT_QFIvY2WfvOIJvLqYoVTDx4tpchXWo5-KiLhPlPqn7HoFknoPBY86NNxq8i44MH2JPvw5m4JQ=w48-h48-c-k-nd',
+        '😔': 'https://yt3.ggpht.com/jTUFpfVfjnfTMvCteNf4v2e1_V730fD14fGtgz4c5rU4Yw-VeDRQOw6vIULWMNxalvGXj1NKdA=w48-h48-c-k-nd',
+        KEKW: 'https://yt3.ggpht.com/0FLRqpIWPYql08oDl3pYSE_JytvVdSnB8MI4saumn1JeaUa6Boz_9Bvx70QIP3009caHGfHBJA=w24-h24-c-k-nd'
+    };
+
     let currentMessageNumber = 1;
 
     function replaceEmotesForNthMessage(n) {
@@ -182,21 +185,21 @@
             messageElem = chatHistoryRow.children[1];
         }
 
-        if (messageElem) {
-            let messageHTML = messageElem.innerHTML;
+        if (!messageElem) { return; }
 
-            for (const emote of Object.entries(emotes)) {
-                const oldValue = messageElem.innerHTML;
-
-                messageElem.innerHTML = messageElem.innerHTML.replaceAll(emote[0], '');
-
-                if (messageElem.innerHTML.length < oldValue.length) {
-                    const imgTag = `<img src="${emote[1]}" style="width:24px;height:24px;">`;
-                    messageHTML = messageHTML.replaceAll(emote[0], imgTag);
-                }
+        messageElem.innerHTML = messageElem.innerHTML.replaceAll(/:\w+:/g, key => {
+            if (key in emotes) {
+                return `<img src="${emotes[key]}" style="width: 24px; height: 24px;">`;
+            } else {
+                return key;
             }
+        });
 
-            messageElem.innerHTML = messageHTML;
+        for (const key of Object.keys(specialEmotes)) {
+            messageElem.innerHTML = messageElem.innerHTML.replaceAll(
+                key,
+                `<img src="${specialEmotes[key]}" style="width: 24px; height: 24px;">`
+            );
         }
     }
 
