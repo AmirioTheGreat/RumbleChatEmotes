@@ -171,8 +171,8 @@
     };
 
     const observer = new MutationObserver(mutationList => {
-        for (mutation of mutationList) {
-            for (node of mutation.addedNodes) {
+        for (const mutation of mutationList) {
+            for (const node of mutation.addedNodes) {
                 let messageElem;
 
                 if (node.matches('.chat-history--rant')) {
