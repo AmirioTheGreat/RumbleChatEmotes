@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Rumble Chat Emojis
 // @namespace    http://tampermonkey.net/
-// @version      0.26
+// @version      0.29
 // @description  Replace keywords with emojis
 // @author       Infrared Labs
 // @match        https://rumble.com/*
@@ -38,6 +38,7 @@
         ':OMEGAKEKW:': 'https://cdn.betterttv.net/emote/5d75d8eabd340415e9f32b8d/1x',
         ':FeelsStrongMan:': 'https://cdn.betterttv.net/emote/6060bfc47493072efdeb620d/1x',
         ':Copege:': 'https://cdn.betterttv.net/emote/6041012b306b602acc596ddc/1x',
+        ':Copega:': 'https://cdn.betterttv.net/emote/6041012b306b602acc596ddc/1x',
         ':pepePoint:': 'https://cdn.betterttv.net/emote/5fedefa19d7d952e4059e68c/1x',
         ':PepePoint:': 'https://cdn.betterttv.net/emote/5fedefa19d7d952e4059e68c/1x',
         ':TrollDespair:': 'https://cdn.betterttv.net/emote/6024574d2eae5518bece2ddd/1x',
@@ -102,6 +103,7 @@
         ':Aware:': 'https://cdn.betterttv.net/emote/6151c623b63cc97ee6d39040/1x',
         ':Trolled:': 'https://cdn.betterttv.net/emote/62542c0d3c6f14b68844f62a/1x',
         ':TROLLPSYCHO:': 'https://cdn.betterttv.net/emote/601291a86c75a765d463f115/1x',
+        ':TROLLSCHIZO:': 'https://cdn.betterttv.net/emote/601291a86c75a765d463f115/1x',
         ':PepoThink:': 'https://cdn.betterttv.net/emote/5a4ad2574884645e5706e51a/1x',
         ':TriBoom:': 'https://cdn.betterttv.net/emote/5e30ef3861ff6b51e65239b8/1x',
         ':AngelThump:': 'https://cdn.betterttv.net/emote/566ca1a365dbbdab32ec055b/1x',
@@ -109,7 +111,13 @@
         ':PeepoBlanket:': 'https://cdn.betterttv.net/emote/601c0ec44e3ab965ef769138/1x',
         ':KKomrade:': 'https://cdn.betterttv.net/emote/56be9fd6d9ec6bf74424760d/1x',
         ':BBomer:': 'https://cdn.betterttv.net/emote/5ed1973710aaa55e29472b1f/1x',
-        ":PagMan:":"https://cdn.betterttv.net/emote/5ffc9386eb9c37314d22013d/1x",
+        ':PagMan:': 'https://cdn.betterttv.net/emote/5e87b595acae25096140ca84/1x',
+        ':peepoGlad:': 'https://cdn.betterttv.net/emote/5e1a0e188af14b5f1b4384c7/1x',
+        ':WAYTOODANK:': 'https://cdn.betterttv.net/emote/601f0191f1cfbf65dbe1ca58/1x',
+        ':SoyPog:': 'https://cdn.betterttv.net/emote/6050a436306b602acc59df11/1x',
+        ':SoyU:': 'https://cdn.frankerfacez.com/emoticon/450566/1',
+        ':SoyRage:': 'https://cdn.betterttv.net/emote/60cbcaa0f8b3f62601c3f72a/1x',
+        ':BANNED:': 'https://cdn.betterttv.net/emote/5e16e5a8b974112104805f23/1x',
         ':VISION:': 'https://yt3.ggpht.com/FUCoZvCR6Kt03oPOpY_1NOQMOEswS5hWKDKSmoQvJal1aAhYq7LvhFDoCmSdQhiSKGsweGqD3A=w24-h24-c-k-nd',
         ':wokeGorilla:': 'https://yt3.ggpht.com/FUCoZvCR6Kt03oPOpY_1NOQMOEswS5hWKDKSmoQvJal1aAhYq7LvhFDoCmSdQhiSKGsweGqD3A=w24-h24-c-k-nd',
         ':SOLAR:': 'https://yt3.ggpht.com/eJmsmD9_wmmltD-ETwSpqcBJdm6856VhK1jL0eMVzblDr6K0HLz6tVRDLMVa40TBCA2mMx3ESg=w24-h24-c-k-nd',
@@ -134,10 +142,8 @@
         ':angloBox:': 'https://yt3.ggpht.com/RGrzWPEzJCyz94yBb_wTb1U3NKKolGDc3R57YzMwAYvTmQBJTQpnzyWkbZadxHoBPElKqIMRsQ=w24-h24-c-k-nd',
         ':GLOW:': 'https://yt3.ggpht.com/WGbCBHgmRfmUn7MQikZf_6f2r-WQbKmZ4ZL7bbWAiHjp4AILq5S3C9KKc9D-i18xLqKcs8eHbQ=w24-h24-c-k-nd',
         ':BAN:': 'https://yt3.ggpht.com/yyafi5vqtBuozyI7pU0dHAtb23PnBo8yPb9USgsR_sxr4Yz1E8txzo7JainhONSuA_9pz59DbA=w24-h24-c-k-nd',
-        ':BANNED:': 'https://yt3.ggpht.com/yyafi5vqtBuozyI7pU0dHAtb23PnBo8yPb9USgsR_sxr4Yz1E8txzo7JainhONSuA_9pz59DbA=w24-h24-c-k-nd',
         ':INFRATROOP:': 'https://yt3.ggpht.com/8o-EThpx1NHmV4tgLFb-cOOaEXWLBd_BYe7FY0Idr4SxB-a0SPzsVbNl3k9O7LrewmaR5fhy5Ns=w24-h24-c-k-nd',
         ':Soynerd:': 'https://yt3.ggpht.com/u3JGpmizwBSvnZf3GSEfDXsPE-WQAsRUSNBtfc9ht-ynFiiDZHU52g_mRgxhbWE6LfGFZ6WG=w24-h24-c-k-nd',
-        ':SoyU:': 'https://yt3.ggpht.com/u3JGpmizwBSvnZf3GSEfDXsPE-WQAsRUSNBtfc9ht-ynFiiDZHU52g_mRgxhbWE6LfGFZ6WG=w24-h24-c-k-nd',
         ':ANTINATO:': 'https://yt3.ggpht.com/Dq5CQ4wyp3WUy_W4m5WotVG_Grrkrh3xvPoBu5_BQT-Q5X9j9-wsqcoHJbL-g6IZxbwCrMyfRQ=w24-h24-c-k-nd',
         ':RedPeter:': 'https://yt3.ggpht.com/I_f_vv2X5V6S13mexYEd0mozVhpogkKT44b5xu7aLJ5bCxW1UfU6zmTDJiSbYEb-WIh1xvIZKw=w24-h24-c-k-nd',
         ':MECHAape:': 'https://yt3.ggpht.com/XRzvRxysTzoqgp87rw9xQDB1l30NGFFe-XEP_AxZvgUSayisYf3FY-tHkYS9Bw4JjuDpyFAcrfw=w24-h24-c-k-nd',
