@@ -181,7 +181,7 @@
                     messageElem = node.children[1];
                 }
 
-                if (!messageElem) return;
+                if (!messageElem) continue;
 
                 messageElem.innerHTML = messageElem.innerHTML.replaceAll(/:\w+:/g, key => {
                     if (key in emotes) {
