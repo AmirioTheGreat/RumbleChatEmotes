@@ -185,7 +185,7 @@
 
                 messageElem.innerHTML = messageElem.innerHTML.replaceAll(/:\w+:/g, key => {
                     if (key in emotes) {
-                        return `<img src="${emotes[key]}" style="width: 24px; height: 24px;">`;
+                        return `<img src="${emotes[key]}" style="width: 24px; height: 24px;"  title="${key}">`;
                     } else {
                         return key;
                     }
@@ -194,7 +194,7 @@
                 for (const key of Object.keys(specialEmotes)) {
                     messageElem.innerHTML = messageElem.innerHTML.replaceAll(
                         key,
-                        `<img src="${specialEmotes[key]}" style="width: 24px; height: 24px;">`
+                        `<img src="${specialEmotes[key]}" style="width: 24px; height: 24px;"  title="${key}">`
                     );
                 }
             }
