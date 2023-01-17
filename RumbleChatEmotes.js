@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Rumble Chat Emojis
 // @namespace    http://tampermonkey.net/
-// @version      0.24
+// @version      0.25
 // @description  Replace keywords with emojis
 // @author       Mr. Qian Hu Zi
 // @match        https://rumble.com/*
@@ -112,6 +112,7 @@
       ":PeepoBlanket:":"https://cdn.betterttv.net/emote/601c0ec44e3ab965ef769138/1x",
       ":KKomrade:":"https://cdn.betterttv.net/emote/56be9fd6d9ec6bf74424760d/1x",
       ":BBomer:":"https://cdn.betterttv.net/emote/5ed1973710aaa55e29472b1f/1x",
+      ":PagMan:":"https://cdn.betterttv.net/emote/5ffc9386eb9c37314d22013d/1x",
   ":VISION:": "https://yt3.ggpht.com/FUCoZvCR6Kt03oPOpY_1NOQMOEswS5hWKDKSmoQvJal1aAhYq7LvhFDoCmSdQhiSKGsweGqD3A=w24-h24-c-k-nd",
       ":wokeGorilla:": "https://yt3.ggpht.com/FUCoZvCR6Kt03oPOpY_1NOQMOEswS5hWKDKSmoQvJal1aAhYq7LvhFDoCmSdQhiSKGsweGqD3A=w24-h24-c-k-nd",
   ":SOLAR:": "https://yt3.ggpht.com/eJmsmD9_wmmltD-ETwSpqcBJdm6856VhK1jL0eMVzblDr6K0HLz6tVRDLMVa40TBCA2mMx3ESg=w24-h24-c-k-nd",
