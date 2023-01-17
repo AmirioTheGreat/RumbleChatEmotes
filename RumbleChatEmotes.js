@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         Rumble Chat Emojis
 // @namespace    http://tampermonkey.net/
-// @version      0.25
+// @version      0.26
 // @description  Replace keywords with emojis
-// @author       Mr. Qian Hu Zi
+// @author       Infrared Labs
 // @match        https://rumble.com/*
 // @icon         https://rumble.com/i/favicon-v4.png
 // @license MIT
