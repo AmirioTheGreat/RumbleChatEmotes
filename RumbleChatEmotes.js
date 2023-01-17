@@ -170,61 +170,36 @@
         KEKW: 'https://yt3.ggpht.com/0FLRqpIWPYql08oDl3pYSE_JytvVdSnB8MI4saumn1JeaUa6Boz_9Bvx70QIP3009caHGfHBJA=w24-h24-c-k-nd'
     };
 
-    let currentMessageNumber = 1;
+    const observer = new MutationObserver(mutationList => {
+        for (mutation of mutationList) {
+            for (node of mutation.addedNodes) {
+                let messageElem;
 
-    function replaceEmotesForNthMessage(n) {
-        const chatHistoryRow = document.querySelector(`#chat-history-list .chat-history--row:nth-child(${n})`);
-        let messageElem;
-        let userElem;
+                if (node.matches('.chat-history--rant')) {
+                    messageElem = node.children[0].children[1];
+                } else {
+                    messageElem = node.children[1];
+                }
 
-        if (chatHistoryRow.classList.contains('chat-history--rant')) {
-            userElem = chatHistoryRow.children[0].children[0].children[1].children[0];
-            messageElem = chatHistoryRow.children[0].children[1];
-        } else {
-            userElem = chatHistoryRow.children[0].children[0];
-            messageElem = chatHistoryRow.children[1];
-        }
+                if (!messageElem) return;
 
-        if (!messageElem) { return; }
+                messageElem.innerHTML = messageElem.innerHTML.replaceAll(/:\w+:/g, key => {
+                    if (key in emotes) {
+                        return `<img src="${emotes[key]}" style="width: 24px; height: 24px;">`;
+                    } else {
+                        return key;
+                    }
+                });
 
-        messageElem.innerHTML = messageElem.innerHTML.replaceAll(/:\w+:/g, key => {
-            if (key in emotes) {
-                return `<img src="${emotes[key]}" style="width: 24px; height: 24px;">`;
-            } else {
-                return key;
+                for (const key of Object.keys(specialEmotes)) {
+                    messageElem.innerHTML = messageElem.innerHTML.replaceAll(
+                        key,
+                        `<img src="${specialEmotes[key]}" style="width: 24px; height: 24px;">`
+                    );
+                }
             }
-        });
-
-        for (const key of Object.keys(specialEmotes)) {
-            messageElem.innerHTML = messageElem.innerHTML.replaceAll(
-                key,
-                `<img src="${specialEmotes[key]}" style="width: 24px; height: 24px;">`
-            );
         }
-    }
+    });
 
-    function replaceEmotesForNewMessages() {
-        const numMessages = document.querySelectorAll('#chat-history-list .chat-history--row').length;
-
-        for (let i = currentMessageNumber; i <= numMessages; i++) {
-            replaceEmotesForNthMessage(i);
-            currentMessageNumber += 1;
-        }
-    }
-
-    function initChat() {
-        const rumbleChatText = document.querySelector('aside script:last-of-type').textContent;
-        const chatID = rumbleChatText.split(',')[1].trim();
-        const chatStream = new EventSource(`https://web9.rumble.com/chat/api/chat/${chatID}/stream`);
-
-        chatStream.onmessage = e => {
-            const data = JSON.parse(e.data);
-
-            if (data.type === 'init') {
-                setInterval(() => replaceEmotesForNewMessages(), 500);
-            }
-        };
-    }
-
-    initChat();
+    observer.observe(document.querySelector('#chat-history-list'), { childList: true });
 })();
